@@ -7,8 +7,9 @@ run apt-get install -y postgresql-client-12 gettext-base
 
 workdir /app
 copy . .
-
 run npm install
+run chown -R 1001 /app
+user 1001
 
 expose 4000
 cmd ["/bin/bash","start_postgraphile.sh"]
